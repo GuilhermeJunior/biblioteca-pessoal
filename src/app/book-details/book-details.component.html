@@ -1,0 +1,11 @@
+<div class="container" *ngIf="book">
+  <div class="card" style="width: 18rem;">
+    <div class="card-header">
+      {{book.name}}
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">ID: {{book.id}}</li>
+      <li class="list-group-item">{{book.author}}</li>
+    </ul>
+  </div>
+</div>

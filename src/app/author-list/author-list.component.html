@@ -1,0 +1,8 @@
+<div class="container">
+  <ul>
+    <li *ngFor="let item of items">{{item}}</li>
+  </ul>
+</div>
+
+
+<app-author [numberOfElements]="totalElements" (newEvent)="addItem($event)"></app-author>

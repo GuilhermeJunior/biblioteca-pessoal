@@ -1,0 +1,10 @@
+<div class="container">
+  <table class="table table-striped">
+    <tr>
+      <th>Livro</th>
+    </tr>
+    <tr *ngFor="let book of books">
+      <td> <a [routerLink]="['/book/details', book.id]">{{ book.name }}</a></td>
+    </tr>
+  </table>
+</div>
