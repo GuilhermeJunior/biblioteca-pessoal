@@ -1,14 +1,71 @@
 <div class="container">
-  <h1>Cadastrar Livros</h1>
-  <form>
-    <div class="form-group">
-      <label for="formGroupInput">Nome</label>
-      <input type="text" class="form-control" id="formGroupInput" placeholder="Nome do Livro">
-    </div>
-    <div class="form-group">
-      <label for="formGroupInput2">Autor</label>
-      <input type="text" class="form-control" id="formGroupInput2" placeholder="Nome do Autor">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+  <div class="row">
+    <h1>Cadastrar Livros</h1>
+    <form  #myform="ngForm" (submit)="onSubmit()">
+      <div class="form-row">
+        <div class="col">
+          <label for="formGroupInput">Nome</label>
+          <input
+            type="text"
+            name="input-name"
+            class="form-control"
+            [ngClass]="name.invalid && !name.untouched ? 'is-invalid' : ''"
+            [ngClass]="name.valid ? 'is-valid' : ''"
+            id="formGroupInput"
+            placeholder="Nome do Livro"
+            [(ngModel)] = "this.book.name"
+            #name="ngModel"
+            required>
+            <div class="invalid-feedback">
+              O nome deve ser informado.
+            </div>
+          </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col">
+          <label for="formGroupInput2">Autor</label>
+          <input
+            type="text"
+            name="input-author"
+            class="form-control"
+            [ngClass]="author.invalid && !author.untouched ? 'is-invalid' : ''"
+            [ngClass]="author.valid ? 'is-valid' : ''"
+            id="formGroupInput2"
+            placeholder="Nome do Autor"
+            [(ngModel)] = "this.book.author"
+            #author="ngModel"
+            required>
+            <div class="invalid-feedback">
+              O autor deve ser informado.
+            </div>
+            </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col">
+          <label for="formGroupInput3">ISBN-13</label>
+          <input
+            type="text"
+            name="input-pages"
+            class="form-control"
+            [ngClass]="isbn.invalid && !isbn.untouched ? 'is-invalid' : ''"
+            [ngClass]="isbn.valid ? 'is-valid' : ''"
+            id="formGroupInput3"
+            placeholder="ISBN-13 exemplo: ISBN-13: 978-1-4028-9462-4"
+            [(ngModel)] = "this.book.isbn"
+            #isbn="ngModel"
+            pattern="ISBN(?:-13)?:?\x20*(?=.{17}$)97(?:8|9)([ -])\d{1,5}\1\d{1,7}\1\d{1,6}\1\d$"
+            required>
+            <div class="invalid-feedback">
+              Favor Informar um código correto. Deve Começar com ISBN-13.
+            </div>
+            </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="myform.invalid">Submit</button>
+    </form>
+  </div>
 </div>
+
+<app-book-list [books]="books"></app-book-list>

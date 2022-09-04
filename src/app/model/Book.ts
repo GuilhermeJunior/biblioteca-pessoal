@@ -1,12 +1,14 @@
 export class Book {
-  public id: number;
-  public name: string;
-  public author: string;
+  id!: string;
+  name?: string;
+  author?: string;
+  isbn?: string;
 
-  constructor(id: number, name: string, author: string) {
-    this.id = id;
+  constructor(name: string, author: string, isbn: string) {
+    this.id = String(Math.round(Math.random() * 1000));
     this.name = name;
     this.author = author;
+    this.isbn = isbn;
   }
 
 }

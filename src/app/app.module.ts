@@ -10,20 +10,21 @@ import { BookListComponent } from './book-list/book-list.component';
 import { AuthorComponent } from './author/author.component';
 import { AuthorListComponent } from './author-list/author-list.component';
 import { HomeComponent } from './home/home.component';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookDetailsComponent } from './book-details/book-details.component';
+import { BookService } from './book/book.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyHeaderComponent,
     MyFooterComponent,
-    BookComponent,
     BookListComponent,
     AuthorComponent,
     AuthorListComponent,
     HomeComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    BookComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +32,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [BookService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

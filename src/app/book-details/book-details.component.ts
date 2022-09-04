@@ -19,7 +19,7 @@ export class BookDetailsComponent implements OnInit {
     const routParams = this.route.snapshot.paramMap;
     const bookIdFromRoute = Number(routParams.get('id'));
 
-    this.book = books.find(book => book.id === bookIdFromRoute)
+    this.book = books.find(book => book.id === bookIdFromRoute);
   }
 
 }
