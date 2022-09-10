@@ -3,7 +3,7 @@
     <div class="row">
       <label for="item-input">Novo Autor</label>
       <input type="text" formControlName="name" id="item-input" #newItem required>
-      <button [disabled]="disabledBTN" type="button" (click)="addNewAuthor(newItem.value)">Adicionar Autor</button>
+      <button class="btn btn-primary" [disabled]="disabledBTN" type="submit" (click)="addNewAuthor(newItem.value)">Adicionar Autor</button>
     </div>
   </form>
   <div class="row" *ngIf="showAlert">

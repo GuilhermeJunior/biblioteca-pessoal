@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { elementAt } from 'rxjs';
+import { AuthorPromiseService } from '../author/author-promise.service';
+import { Author } from '../model/Author';
 
 @Component({
   selector: 'app-author-list',
@@ -7,19 +10,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthorListComponent implements OnInit {
 
-  items = ['Machado de Assis', 'Fiódor Dostoiévski', 'Charles Dickens']
-  totalElements = 0
+  authors?: Author[];
+
+  totalElements = 0;
 
   addItem(newItem: string) {
     if (newItem) {
-      this.items.push(newItem);
-      this.totalElements = this.items.length;
+      this.authorPromiseService.save(new Author(newItem)).then(() => {
+        this.loadElements();
+      });
    }
   }
 
-  constructor() { }
+  deleteItem(id: string) {
+    this.authorPromiseService.deleteById(id);
+    this.loadElements();
+  }
+
+  constructor(private authorPromiseService: AuthorPromiseService) { }
 
   ngOnInit(): void {
+    this.loadElements();
+  }
+
+  loadElements(): void {
+
+    this.authorPromiseService.getAll()
+    .then((a: Author[]) => {
+     this.authors = a;
+    }
+    ).catch((e) => {
+       console.error("Something went wrong");
+    });
+
+    if (this.authors) {
+      this.totalElements = this.authors.length
+    }
   }
 
 }
