@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { elementAt } from 'rxjs';
-import { AuthorPromiseService } from '../author/author-promise.service';
+import { AuthorService } from '../author/author.service';
 import { Author } from '../model/Author';
 
 @Component({
@@ -16,18 +15,22 @@ export class AuthorListComponent implements OnInit {
 
   addItem(newItem: string) {
     if (newItem) {
-      this.authorPromiseService.save(new Author(newItem)).then(() => {
+      this.authorService.save(new Author(newItem)).subscribe(() => {
         this.loadElements();
       });
    }
   }
 
-  deleteItem(id: string) {
-    this.authorPromiseService.deleteById(id);
-    this.loadElements();
+  deleteItem(id: string): void {
+    this.authorService.deleteById(id)
+    .subscribe(
+      () => {
+        this.loadElements();
+      }
+    );
   }
 
-  constructor(private authorPromiseService: AuthorPromiseService) { }
+  constructor(private authorService: AuthorService) { }
 
   ngOnInit(): void {
     this.loadElements();
@@ -35,17 +38,17 @@ export class AuthorListComponent implements OnInit {
 
   loadElements(): void {
 
-    this.authorPromiseService.getAll()
-    .then((a: Author[]) => {
+    this.authorService.getAll()
+    .subscribe((a: Author[]) => {
      this.authors = a;
+     if (!Array.isArray(this.authors)) {
+      return;
+     } else {
+       this.totalElements = this.authors.length;
+     }
     }
-    ).catch((e) => {
-       console.error("Something went wrong");
-    });
+    );
 
-    if (this.authors) {
-      this.totalElements = this.authors.length
-    }
   }
 
 }

@@ -26,14 +26,18 @@ export class AuthorComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnChanges(): void {
-    if (this.numberOfElements > 15) {
+    if (this.numberOfElements >= 15) {
         this.showAlert = true;
         this.disabledBTN = true;
+    } else {
+      this.showAlert = false;
+      this.disabledBTN = false;
     }
 
   }
 
   ngOnInit(): void {
+
   }
 
 

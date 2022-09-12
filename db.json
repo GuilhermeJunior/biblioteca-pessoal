@@ -3,6 +3,18 @@
     {
       "name": "Machado de Assis",
       "id": 1
+    },
+    {
+      "name": "Paulo Coelho",
+      "id": 2
+    }
+  ],
+  "books": [
+    {
+      "id": 1,
+      "name": "O Iluminado",
+      "author": "Stephen King",
+      "isbn": "isbn-teste"
     }
   ]
 }
