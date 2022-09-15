@@ -22,7 +22,7 @@
           </div>
       </div>
 
-      <div class="form-row">
+<!--       <div class="form-row">
         <div class="col">
           <label for="formGroupInput2">Autor</label>
           <input
@@ -40,6 +40,27 @@
               O autor deve ser informado.
             </div>
             </div>
+      </div> -->
+
+      <div class="form-row">
+        <div class="col">
+          <label for="formGroupInput2.1">Autor</label>
+          <select class="form-select"
+                  name="author"
+                  [(ngModel)] = "this.book.author"
+                  #author="ngModel"
+                  [ngClass]="author.invalid && !author.untouched ? 'is-invalid' : ''"
+                  [ngClass]="author.valid ? 'is-valid' : ''"
+                  required>
+            <option value="" disabled>Selecione o Autor</option>
+            <option *ngFor="let author of authors" [ngValue]="author.name">
+              {{author.name}}
+            </option>
+          </select>
+          <div class="invalid-feedback">
+            O autor deve ser informado.
+          </div>
+        </div>
       </div>
 
       <div class="form-row">
@@ -47,7 +68,7 @@
           <label for="formGroupInput3">ISBN-13</label>
           <input
             type="text"
-            name="input-pages"
+            name="input-isbn"
             class="form-control"
             [ngClass]="isbn.invalid && !isbn.untouched ? 'is-invalid' : ''"
             [ngClass]="isbn.valid ? 'is-valid' : ''"
@@ -62,10 +83,28 @@
             </div>
             </div>
       </div>
-
-      <button type="submit" class="btn btn-primary" [disabled]="myform.invalid">Submit</button>
+      <div class="form-row">
+        <div class="col">
+          <label for="formGroupInput4">Lido</label>
+          <input
+            type="checkbox"
+            name="input-read"
+            [(ngModel)] = "this.book.isRead"
+            id="formGroupInput4"
+            #isRead="ngModel">
+        </div>
+        <input type="hidden" id="custId" name="input-id"  [(ngModel)]="this.book.id" #id="ngModel">
+        <div class="col">
+          <button type="submit" class="btn btn-primary" [disabled]="myform.invalid">Cadastrar</button>
+        </div>
+      </div>
     </form>
   </div>
 </div>
 
-<app-book-list [books]="books"></app-book-list>
+<app-book-list
+    [books]="books"
+    (deleteItemEvent)="deleteItem($event)"
+    (updateItemEvent)="updateById($event)"
+    >
+</app-book-list>

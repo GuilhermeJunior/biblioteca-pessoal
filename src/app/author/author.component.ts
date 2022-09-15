@@ -1,20 +1,18 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-author',
   templateUrl: './author.component.html',
   styleUrls: ['./author.component.css']
 })
-export class AuthorComponent implements OnInit, OnChanges {
+export class AuthorComponent implements OnInit {
+
   myForm = new FormGroup({
-    name: new FormControl()
+    name: new FormControl("", Validators.required)
   });
   @Output() newEvent = new EventEmitter<string>();
-  @Input() numberOfElements: number = 0;
 
-  showAlert: boolean = false;
-  disabledBTN: boolean = false;
 
   addNewAuthor(value: string) {
 
@@ -22,23 +20,9 @@ export class AuthorComponent implements OnInit, OnChanges {
     this.myForm.get('name')?.reset();
 
   }
-
   constructor() { }
 
-  ngOnChanges(): void {
-    if (this.numberOfElements >= 15) {
-        this.showAlert = true;
-        this.disabledBTN = true;
-    } else {
-      this.showAlert = false;
-      this.disabledBTN = false;
-    }
-
-  }
-
   ngOnInit(): void {
-
   }
-
 
 }

@@ -2,13 +2,14 @@
   <form [formGroup]="myForm">
     <div class="row">
       <label for="item-input">Novo Autor</label>
-      <input type="text" formControlName="name" id="item-input" #newItem required>
-      <button class="btn btn-primary" [disabled]="disabledBTN" type="submit" (click)="addNewAuthor(newItem.value)">Adicionar Autor</button>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="name"
+        id="item-input"
+        #newItem
+        required>
+      <button class="btn btn-primary" [disabled]="myForm.invalid" (click)="addNewAuthor(newItem.value)" type="submit" >Adicionar Autor</button>
     </div>
   </form>
-  <div class="row" *ngIf="showAlert">
-    <div class="alert alert-danger" role="alert">
-      Atingiu o limite de autores!
-    </div>
-  </div>
 </div>

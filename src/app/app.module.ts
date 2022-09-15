@@ -14,7 +14,6 @@ import { AuthorListComponent } from './author-list/author-list.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookDetailsComponent } from './book-details/book-details.component';
-import { BookService } from './book/book.service';
 
 
 @NgModule({
@@ -36,7 +35,7 @@ import { BookService } from './book/book.service';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [BookService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

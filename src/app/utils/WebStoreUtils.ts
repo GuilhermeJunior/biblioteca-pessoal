@@ -32,7 +32,7 @@ export class WebStorageUtils {
   }
 
 
-  static initWebStorage(): void {
+/*   static initWebStorage(): void {
     if(localStorage.getItem(Constants.BOOK_NAME) != null) {
       return;
     }
@@ -40,5 +40,5 @@ export class WebStorageUtils {
     let book = new Book(Constants.BOOK_NAME, Constants.BOOK_AUTHOR, Constants.BOOK_ISBN);
     localStorage.setItem(Constants.BOOK_NAME, JSON.stringify(book));
     localStorage.setItem(Constants.BOOKS_KEY, JSON.stringify([]));
-  }
+  } */
 }

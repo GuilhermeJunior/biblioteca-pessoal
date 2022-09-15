@@ -5,16 +5,86 @@
       "id": 1
     },
     {
-      "name": "Paulo Coelho",
+      "name": "Paulo Coelho Segundo",
       "id": 2
+    },
+    {
+      "name": "Homero",
+      "id": 3
+    },
+    {
+      "name": "Guilherme",
+      "id": 4
+    },
+    {
+      "name": "fgdfd",
+      "id": 5
+    },
+    {
+      "name": "fdfd",
+      "id": 6
+    },
+    {
+      "name": "Guilherme Chamorro",
+      "id": 7
     }
   ],
   "books": [
     {
       "id": 1,
-      "name": "O Iluminado",
-      "author": "Stephen King",
-      "isbn": "isbn-teste"
+      "name": "O Iluminado 4",
+      "author": "Machado de Assis",
+      "isRead": false,
+      "isbn": "ISBN-13: 978-1-4028-9462-6"
+    },
+    {
+      "name": "As Cronicas de Narnia",
+      "author": "C.S Lewis",
+      "isbn": "ISBN-13: 978-1-4028-9462-6",
+      "isRead": true,
+      "id": 4
+    },
+    {
+      "name": "Verônica Decide Morrer",
+      "author": "Machado de Assis",
+      "isbn": "ISBN-13: 978-1-4028-9462-6",
+      "isRead": true,
+      "id": 7
+    },
+    {
+      "name": "O Diário de um mago 2",
+      "author": "Paulo Coelho Segundo",
+      "isbn": "ISBN-13: 978-1-4028-9462-6",
+      "isRead": false,
+      "id": 8
+    },
+    {
+      "name": "O Conde De Monte Cristo f",
+      "author": "Machado de Assis",
+      "isbn": "ISBN-13: 978-1-4028-9462-6",
+      "isRead": true,
+      "id": 9
+    },
+    {
+      "name": "Quinicas Borba",
+      "author": "Machado de Assis",
+      "isbn": "ISBN-13: 978-1-4028-9462-1",
+      "isRead": true,
+      "id": 10
+    },
+    {
+      "name": "Marshal 23",
+      "author": "Machado de Assis",
+      "isbn": "ISBN-13: 978-1-4028-9462-1",
+      "isRead": false,
+      "id": 11
+    },
+    {
+      "name": "Verônica Decide Morrer",
+      "author": "Machado de Assis",
+      "isbn": "ISBN-13: 978-1-4028-9462-6",
+      "isRead": false,
+      "id": 12
     }
   ]
 }

@@ -1,26 +1,54 @@
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { Observable } from "rxjs";
 import { Book } from "../model/Book";
-import { Constants } from "../utils/constants";
-import { WebStorageUtils } from "../utils/WebStoreUtils";
+import { EndpointRoutes } from "../utils/endpoint-routes";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class BookService {
+
+  URL = EndpointRoutes.BOOKS;
+
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
 
   books!: Book[];
 
-  constructor() {
-    this.books = WebStorageUtils.get(Constants.BOOKS_KEY);
+  constructor(private httpClient: HttpClient) {}
+
+  getAll(): Observable<Book[]> {
+    return this.httpClient.get<Book[]>(this.URL);
   }
 
-  save(book: Book) {
-    this.books = WebStorageUtils.get(Constants.BOOKS_KEY);
-    this.books.push(book);
-    WebStorageUtils.set(Constants.BOOKS_KEY, this.books);
+  getById(id: string): Observable<Book> {
+    return this.httpClient.get<Book>(`${this.URL}/${id}`);
   }
 
-  getBooks(): Book[] {
-    this.books = WebStorageUtils.get(Constants.BOOKS_KEY);
-    return this.books;
+  save(book: Book): Observable<Book> {
+    return this.httpClient
+    .post<Book>(
+      this.URL,
+      book,
+      this.httpOptions
+    );
   }
+
+  updateById(id: string, body: Book): Observable<Book>  {
+
+    return this.httpClient
+    .put<Book>(
+      `${this.URL}/${id}`,
+      body,
+      this.httpOptions
+    )
+  }
+
+  deleteById(id: string): Observable<unknown> {
+    return this.httpClient.delete<unknown>(`${this.URL}/${id}`, this.httpOptions);
+  }
+
 }
