@@ -11,22 +11,6 @@
     {
       "name": "Homero",
       "id": 3
-    },
-    {
-      "name": "Guilherme",
-      "id": 4
-    },
-    {
-      "name": "fgdfd",
-      "id": 5
-    },
-    {
-      "name": "fdfd",
-      "id": 6
-    },
-    {
-      "name": "Guilherme Chamorro",
-      "id": 7
     }
   ],
   "books": [
@@ -71,20 +55,6 @@
       "isbn": "ISBN-13: 978-1-4028-9462-1",
       "isRead": true,
       "id": 10
-    },
-    {
-      "name": "Marshal 23",
-      "author": "Machado de Assis",
-      "isbn": "ISBN-13: 978-1-4028-9462-1",
-      "isRead": false,
-      "id": 11
-    },
-    {
-      "name": "Verônica Decide Morrer",
-      "author": "Machado de Assis",
-      "isbn": "ISBN-13: 978-1-4028-9462-6",
-      "isRead": false,
-      "id": 12
     }
   ]
 }

@@ -1,27 +1,34 @@
+<app-author (newEvent)="addItem($event)"></app-author>
+
 <div class="container">
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Código</th>
-        <th scope="col">Nome</th>
-        <th scope="col">#</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of authors">
-        <td scope="row">{{item.id}}</td>
-        <td>{{item.name | uppercase}}</td>
-        <td>
-          <a>
-            <i class="bi bi-trash" (click)="deleteItem(item.id)"></i>
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nome</th>
+          <th scope="col">#</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of authors">
+          <td scope="row">{{item.id}}</td>
+          <td>{{item.name | uppercase}}</td>
+          <td>
+            <a>
+              <i class="bi bi-trash" (click)="deleteItem(item.id)"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <br>
+  <br>
 </div>
 
 
-<app-author (newEvent)="addItem($event)"></app-author>
+
 
 
