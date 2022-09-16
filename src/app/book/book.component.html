@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="row">
+    <h1>Cadastrar Livros</h1>
+    <form  #myform="ngForm" (submit)="onSubmit()">
+      <div class="form-row">
+        <div class="col">
+          <label for="formGroupInput">Nome</label>
+          <input
+            type="text"
+            name="input-name"
+            class="form-control"
+            [ngClass]="name.invalid && !name.untouched ? 'is-invalid' : ''"
+            [ngClass]="name.valid ? 'is-valid' : ''"
+            id="formGroupInput"
+            placeholder="Nome do Livro"
+            [(ngModel)] = "this.book.name"
+            #name="ngModel"
+            required>
+            <div class="invalid-feedback">
+              O nome deve ser informado.
+            </div>
+          </div>
+      </div>
+
+<!--       <div class="form-row">
+        <div class="col">
+          <label for="formGroupInput2">Autor</label>
+          <input
+            type="text"
+            name="input-author"
+            class="form-control"
+            [ngClass]="author.invalid && !author.untouched ? 'is-invalid' : ''"
+            [ngClass]="author.valid ? 'is-valid' : ''"
+            id="formGroupInput2"
+            placeholder="Nome do Autor"
+            [(ngModel)] = "this.book.author"
+            #author="ngModel"
+            required>
+            <div class="invalid-feedback">
+              O autor deve ser informado.
+            </div>
+            </div>
+      </div> -->
+
+      <div class="form-row">
+        <div class="col">
+          <label for="formGroupInput2.1">Autor</label>
+          <select class="form-select"
+                  name="author"
+                  [(ngModel)] = "this.book.author"
+                  #author="ngModel"
+                  [ngClass]="author.invalid && !author.untouched ? 'is-invalid' : ''"
+                  [ngClass]="author.valid ? 'is-valid' : ''"
+                  required>
+            <option value="" disabled>Selecione o Autor</option>
+            <option *ngFor="let author of authors" [ngValue]="author.name">
+              {{author.name}}
+            </option>
+          </select>
+          <div class="invalid-feedback">
+            O autor deve ser informado.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col">
+          <label for="formGroupInput3">ISBN-13</label>
+          <input
+            type="text"
+            name="input-isbn"
+            class="form-control"
+            [ngClass]="isbn.invalid && !isbn.untouched ? 'is-invalid' : ''"
+            [ngClass]="isbn.valid ? 'is-valid' : ''"
+            id="formGroupInput3"
+            placeholder="ISBN-13 exemplo: ISBN-13: 978-1-4028-9462-4"
+            [(ngModel)] = "this.book.isbn"
+            #isbn="ngModel"
+            pattern="ISBN(?:-13)?:?\x20*(?=.{17}$)97(?:8|9)([ -])\d{1,5}\1\d{1,7}\1\d{1,6}\1\d$"
+            required>
+            <div class="invalid-feedback">
+              Favor Informar um código correto. Deve Começar com ISBN-13.
+            </div>
+            </div>
+      </div>
+      <div class="form-row">
+        <div class="col">
+          <label for="formGroupInput4">Lido</label>
+          <input
+            type="checkbox"
+            name="input-read"
+            [(ngModel)] = "this.book.isRead"
+            id="formGroupInput4"
+            #isRead="ngModel">
+        </div>
+        <input type="hidden" id="custId" name="input-id"  [(ngModel)]="this.book.id" #id="ngModel">
+        <div class="col">
+          <button type="submit" class="btn btn-primary" [disabled]="myform.invalid">Cadastrar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-book-list
+    [books]="books"
+    (deleteItemEvent)="deleteItem($event)"
+    (updateItemEvent)="updateById($event)"
+    >
+</app-book-list>
