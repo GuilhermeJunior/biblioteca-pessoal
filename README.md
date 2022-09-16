@@ -4,6 +4,8 @@ CRUD acervos de livros pessoal
 # Protótipo
 https://www.figma.com/file/ZkhHjSbGFpECwfuMJzA9Sz/biblioteca-pessoal?node-id=0%3A1
 
+# Aplicação Github Pages
+https://guilhermejunior.github.io/biblioteca-pessoal/
 
 # Checklist
 - [x] Criar o repositório no GitHub com a estrutura do Gitflow, ou seja, branches main e develop.
