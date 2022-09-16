@@ -1,30 +1,35 @@
 <div class="container mt-2">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Livro</th>
-        <th>Autor</th>
-        <th>Editar</th>
-        <th>Deletar</th>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Livro</th>
+          <th>Autor</th>
+          <th>Editar</th>
+          <th>Deletar</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td><a [routerLink]="['/book/details', book.id]">{{book.id}}</a></td>
+        <td>{{book.name}}</td>
+        <td>{{book.author}}</td>
+        <td>
+          <a>
+            <i class="bi bi-pencil" (click)="updateById(book.id)"></i>
+          </a>
+        </td>
+        <td>
+          <a>
+            <i class="bi bi-trash" (click)="deleteItem(book.id)"></i>
+          </a>
+        </td>
       </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let book of books">
-      <td><a [routerLink]="['/book/details', book.id]">{{book.id}}</a></td>
-      <td>{{book.name}}</td>
-      <td>{{book.author}}</td>
-      <td>
-        <a>
-          <i class="bi bi-pencil" (click)="updateById(book.id)"></i>
-        </a>
-      </td>
-      <td>
-        <a>
-          <i class="bi bi-trash" (click)="deleteItem(book.id)"></i>
-        </a>
-      </td>
-    </tr>
-  </tbody>
-  </table>
+    </tbody>
+    </table>
+</div>
+<br>
+<br>
+<br>
 </div>
